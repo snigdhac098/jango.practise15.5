@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col justify-content-center">
+
+<h3 class="text-center"> This is a Homepage of Musician_Directory Project </h3>
+<hr>
+<table class="table ml-2" >
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Musician Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Album Rating</th>
+            <th scope="col">Instrument Type</th>
+            <th scope="col">Album Name</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for album in data %}
+            <tr>
+                <td scope="col">{{ album.id }}</td>
+                <td scope="col">
+                    <a href="{% url 'edit_musician' album.Musician.id %}">{{ album.Musician.First_name}} {{ album.Musician.Last_name }}</a>
+                </td>
+                <td scope="col">{{ album.Musician.Email }}</td>
+                <td scope="col">{{ album.Rating }}</td>
+                <td scope="col">{{ album.Musician.Instrument_Type }}</td>
+                <td scope="col">{{ album.Album_name }}</td>
+                <td scope="col">{{ album.Album_release_Date }}</td>
+                <td scope="col">
+                    <a href="{% url "edit_album" album.id %}">
+                        <button class="btn me-1 btn-warning">Edit</button>
+                    </a>--------------------[[0p---------------------------0,]]
+                    <a href="{% url "delete_table" album.id %}">
+                        <button class="btn me-1 btn-danger">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+</div
+{% endblock %}
